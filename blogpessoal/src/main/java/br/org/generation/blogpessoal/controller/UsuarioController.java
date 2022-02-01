@@ -38,7 +38,7 @@ public class UsuarioController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> getById(@PathVariable Long id){
 		return usuarioRepository.findById(id)
-				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
+				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	

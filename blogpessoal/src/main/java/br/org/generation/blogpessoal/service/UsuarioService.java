@@ -34,17 +34,16 @@ public class UsuarioService {
 			
 			Optional<Usuario> buscaUsuario = usuarioRepository.findByUsuario(usuario.getUsuario());
 			
-			if ((buscaUsuario.isPresent()) && ( buscaUsuario.get().getId() != usuario.getId()))
+			if ((buscaUsuario.isPresent()) && (buscaUsuario.get().getId() != usuario.getId()))
 				throw new ResponseStatusException(
 						HttpStatus.BAD_REQUEST, "usuário já existe!", null);
 			
 			usuario.setSenha(criptografarSenha(usuario.getSenha()));
 
 			return Optional.ofNullable(usuarioRepository.save(usuario));
-			
 		}
 		
-			return Optional.empty();
+		return Optional.empty();
 	
 	}	
 
@@ -62,7 +61,6 @@ public class UsuarioService {
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 
 				return usuarioLogin;
-
 			}
 		}	
 		
@@ -71,27 +69,21 @@ public class UsuarioService {
 	}
 
 	private String criptografarSenha(String senha) {
-
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
 		return encoder.encode(senha);
 
 	}
 	
 	private boolean compararSenhas(String senhaDigitada, String senhaBanco) {
-		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
 		return encoder.matches(senhaDigitada, senhaBanco);
 
 	}
 
 	private String gerarBasicToken(String usuario, String senha) {
-
 		String token = usuario + ":" + senha;
 		byte[] tokenBase64 = Base64.encodeBase64(token.getBytes(Charset.forName("US-ASCII")));
-		return "Basic " + new String(tokenBase64);
-
+		return "Basic" + new String(tokenBase64);
 	}
 
 }	
