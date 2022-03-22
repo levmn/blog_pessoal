@@ -18,7 +18,7 @@
 
 ## 💾 Rodando o projeto
 <p>Para rodar o projeto basta clonar este repositório e fazer o uso da Spring Tools ou Eclipse.</p>
-<p>Você pode visualizar a aplicação front-end do projeto rodando <a href="https://github.com/levmn/genblog_frontend/">neste link</a>.</p>
+<p>Você pode visualizar a aplicação front-end do projeto rodando <a href="https://github.com/levmn/genblog_frontend/">aqui</a>.</p>
 
 ## 🛰️ Status do projeto
 <p>O projeto está finalizado.</p>
